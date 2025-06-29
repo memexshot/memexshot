@@ -1,0 +1,26 @@
+# macOS Integration
+pyobjc-core>=9.0
+pyobjc-framework-Cocoa>=9.0
+pyobjc-framework-Quartz>=9.0
+
+# Clipboard Operations
+pyperclip>=1.8.2
+
+# Mouse/Keyboard Control
+pynput>=1.7.6
+
+# Database
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+supabase>=2.0.0
+
+# Utilities
+loguru>=0.7.2
+python-dotenv>=1.0.0
+
+# Twitter API
+tweepy>=4.14.0
+
+# Development
+black>=23.0.0
+pytest>=7.4.0

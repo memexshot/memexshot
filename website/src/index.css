@@ -1,0 +1,174 @@
+/* Rabone Font */
+@font-face {
+  font-family: 'Rabone';
+  src: url('/mosk bold 700.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Rabone', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode */
+body {
+  background: #ffffff;
+  color: #131324;
+}
+
+/* Dark mode */
+body.dark {
+  background: #131324;
+  color: #ffffff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #12121c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e049e0;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #e049e0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d633d6;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #d633d6;
+}
+
+/* Glass effect - Flat style */
+.glass {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-shadow: none;
+}
+
+.dark .glass {
+  background: #131324;
+  border: 1px solid #131324;
+  box-shadow: none;
+}
+
+.glass-darker {
+  background: #131324;
+  border: 1px solid #131324;
+}
+
+.dark .glass-darker {
+  background: #131324;
+  border: 1px solid #131324;
+}
+
+/* Modern glow effects - removed for flat design */
+.moonshot-glow {
+  box-shadow: none;
+}
+
+.dark .moonshot-glow {
+  box-shadow: none;
+}
+
+.moonshot-button {
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.moonshot-button-default {
+  background: linear-gradient(135deg, #e049e0 0%, #d633d6 100%);
+  box-shadow: 0 4px 15px rgba(224, 73, 224, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.moonshot-button-default::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.moonshot-button-default:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(224, 73, 224, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.moonshot-button-default:hover::before {
+  left: 100%;
+}
+
+/* Text gradient - Moonshot style */
+.text-gradient {
+  background: linear-gradient(135deg, #e049e0 0%, #d633d6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-light {
+  background: linear-gradient(135deg, #e049e0 0%, #ff69ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* All text uses Rabone 700 font weight */
+
+/* Hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(224, 73, 224, 0.3);
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}

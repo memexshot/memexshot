@@ -1,0 +1,9 @@
+/* Creolia Font Face Definition */
+@font-face {
+  font-family: 'Creolia';
+  src: url('./Creolia.otf') format('opentype'),
+       url('./Creolia.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

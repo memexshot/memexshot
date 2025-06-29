@@ -1,0 +1,64 @@
+{
+  "coins": [
+    {
+      "id": 1,
+      "ticker": "MOON",
+      "name": "Moon Token",
+      "description": "The first automated token on Moonshot platform",
+      "website": "https://moontoken.com",
+      "twitter": "@moontoken",
+      "status": "completed",
+      "processed_at": "2025-06-29T05:40:25.414517"
+    },
+    {
+      "id": 2,
+      "ticker": "STAR",
+      "name": "Star Coin",
+      "description": "Reach for the stars with Star Coin",
+      "website": "https://starcoin.io",
+      "twitter": "@starcoin",
+      "status": "completed",
+      "processed_at": "2025-06-29T05:44:33.458300"
+    },
+    {
+      "id": 3,
+      "ticker": "ROCKET",
+      "name": "Rocket Finance",
+      "description": "To the moon with Rocket Finance",
+      "website": "https://rocketfinance.xyz",
+      "twitter": "@rocketfinance",
+      "status": "completed",
+      "processed_at": "2025-06-29T05:49:15.741154"
+    },
+    {
+      "id": 4,
+      "ticker": "GALAXY",
+      "name": "Galaxy Token",
+      "description": "Explore the galaxy with our revolutionary token",
+      "website": "https://galaxytoken.space",
+      "twitter": "@galaxytoken",
+      "status": "completed",
+      "processed_at": "2025-06-29T05:53:17.099338"
+    },
+    {
+      "id": 5,
+      "ticker": "COMET",
+      "name": "Comet Coin",
+      "description": "Fast as a comet, bright as a star",
+      "website": "https://cometcoin.io",
+      "twitter": "@cometcoin",
+      "status": "completed",
+      "processed_at": "2025-06-29T05:54:52.420998"
+    },
+    {
+      "id": 6,
+      "ticker": "ORBIT",
+      "name": "Orbit Finance",
+      "description": "Your financial journey in orbit",
+      "website": "https://orbitfinance.com",
+      "twitter": "@orbitfi",
+      "status": "completed",
+      "processed_at": "2025-06-29T05:56:27.751107"
+    }
+  ]
+}
