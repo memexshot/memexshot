@@ -1,214 +1,244 @@
-# 🚀 Moonshot Automation Project
+# MemeXshot - Automated Token Creation Pipeline
 
-## 📊 Project Status: Phase 3 ✅ COMPLETED
+An open-source automated token creation pipeline for Solana blockchain, featuring Twitter integration, real-time queue management, and automated image processing.
 
-### 🎯 Phase 1 Achievements (Completed: 2025-06-29)
+## 🚀 Overview
 
-#### ✨ What We Built
-1. **Coordinate Capture System**
-   - Interactive tool to capture UI element positions
-   - Mouse click detection with countdown timer
-   - JSON export of all coordinates
+MemeXshot automates the process of creating meme tokens by:
+- Monitoring Twitter for token creation requests
+- Processing and validating token metadata
+- Managing creation queues with real-time updates
+- Automatically downloading and syncing token images
+- Integrating with blockchain networks for token deployment
 
-2. **Full Automation Script**
-   - Automated form filling for token creation
-   - Smart swipe gesture implementation
-   - Automatic password entry
-   - Error handling and status tracking
+## 📋 Features
 
-3. **Data Management**
-   - JSON-based token database
-   - Status tracking (pending/completed/failed)
-   - Timestamp recording for each operation
+### ✅ Twitter Bot Integration
+- Monitors mentions and hashtags
+- Parses token creation requests
+- Validates user permissions and rate limits
+- Extracts metadata and images from tweets
 
-#### 🛠️ Technical Stack
-- Python 3.9+
-- PyObjC (macOS integration)
-- Pynput (mouse/keyboard control)
-- Pyperclip (clipboard operations)
-- SQLAlchemy (future database support)
+### ✅ Queue Management System
+- Real-time Supabase integration
+- Status tracking (pending → processing → completed)
+- Automatic retry mechanisms
+- Priority queue support
 
-#### 📈 Success Metrics
-- ✅ 6 tokens successfully created
-- ✅ 100% automation success rate
-- ✅ Zero manual intervention (except initial setup)
-- ✅ Average creation time: ~90 seconds per token
+### ✅ Image Processing Pipeline
+- Automatic image download from URLs
+- Photos app integration for macOS
+- Image validation and formatting
+- Duplicate detection
 
----
+### ✅ Blockchain Integration
+- Solana wallet monitoring
+- Token creation transaction handling
+- Real-time blockchain event tracking
+- Reply bot for transaction confirmations
 
-## 🎯 Phase 2 Achievements (Completed: 2025-06-29)
+## 🛠️ Technology Stack
 
-### ✨ What We Built
-1. **Supabase Integration**
-   - Real-time database for coin management
-   - Status tracking and updates
-   - Cloud-based data storage
+- **Backend**: Python 3.9+
+- **Database**: Supabase (PostgreSQL)
+- **Queue**: Real-time polling system
+- **Blockchain**: Solana Web3
+- **APIs**: Twitter API v2
+- **Logging**: Comprehensive event tracking
 
-2. **Polling Listener System**
-   - Automatic detection of new coins
-   - 5-second polling interval
-   - Queue processing without manual intervention
+## 📦 Installation
 
-3. **Event-Driven Architecture**
-   - No more batch processing
-   - Immediate response to new data
-   - Scalable and efficient
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/memexshot-opensource.git
+cd memexshot-opensource
+```
 
-### 📈 Success Metrics
-- ✅ Zero manual intervention required
-- ✅ 5-second response time to new data
-- ✅ Cloud-based data management
-- ✅ Real-time status updates
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
----
+3. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your API keys
+```
 
-## 🎯 Phase 3 Achievements (Completed: 2025-06-29)
+4. Initialize the database:
+```bash
+python -m scripts.database.setup
+```
 
-### ✨ What We Built
-1. **Dynamic Image Management**
-   - Automatic image download from URLs
-   - Photos Library integration
-   - Image-to-coin matching system
+## ⚙️ Configuration
 
-2. **Photo Sync Service**
-   - Monitors Supabase for new images
-   - Downloads and imports to Photos
-   - Sync status tracking
+### Environment Variables
 
-3. **Enhanced Automation Flow**
-   - Photos Library monitoring
-   - Image-based token triggering
-   - Focus check for app stability
+Create a `.env` file with the following:
 
-### 📈 Success Metrics
-- ✅ Dynamic image support implemented
-- ✅ 100% automation maintained
-- ✅ Unique image per token
-- ✅ Zero manual image handling
+```env
+# Supabase
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_key
 
-### 🛠️ Technical Implementation
-- Auto Photo Sync Service
-- Photos Library Watcher
-- AppleScript integration
-- Image filename conventions
+# Twitter API
+TWITTER_API_KEY=your_api_key
+TWITTER_API_SECRET=your_api_secret
+TWITTER_ACCESS_TOKEN=your_access_token
+TWITTER_ACCESS_TOKEN_SECRET=your_token_secret
 
----
+# Bot Configuration
+BOT_USERNAME=memeXshot
+SEARCH_KEYWORD=olala
+MAX_DAILY_PER_USER=5
+MIN_FOLLOWERS=100
 
-## 🔮 Phase 4 Planning (Next Steps)
+# Blockchain
+SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+HELIUS_API_KEY=your_helius_key
+```
 
-### 🐦 Twitter Bot Integration
+### Database Schema
 
-**Goal**: Automate data entry via Twitter mentions
+The system uses a PostgreSQL database with the following main tables:
+- `coins` - Token creation requests and metadata
+- `users` - Twitter user information and limits
+- `transactions` - Blockchain transaction records
 
-**Planned Features**:
-1. Monitor Twitter mentions
-2. Parse token requests
-3. Extract images from tweets
-4. Queue management system
-5. Rate limiting
+## 🚀 Usage
 
+### Starting All Services
 
-### 🏗️ Proposed Architecture
+```bash
+python scripts/start_all_services.py
+```
+
+This starts:
+- Twitter Bot (monitors mentions)
+- Queue Worker (processes pending tokens)
+- Photo Sync Service (downloads images)
+- Supabase Listener (monitors database changes)
+
+### Individual Services
+
+```bash
+# Twitter Bot only
+python scripts/services/twitter_bot.py
+
+# Queue Worker only
+python scripts/services/queue_worker.py
+
+# Photo Sync only
+python scripts/services/auto_photo_sync.py
+
+# Database Listener only
+python scripts/automation/supabase_listener_polling.py
+```
+
+## 📊 Architecture
 
 ```
 ┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│   Web Form UI   │────▶│  Queue Manager   │────▶│  Automation Bot │
-│  (Data Entry)   │     │  (File Watcher)  │     │   (Token Creator)│
+│   Twitter Bot   │────▶│    Supabase DB   │────▶│ Queue Processor │
+│   (Listener)    │     │    (Real-time)   │     │   (Worker)      │
 └─────────────────┘     └──────────────────┘     └─────────────────┘
          │                       │                         │
          ▼                       ▼                         ▼
    ┌──────────┐           ┌──────────┐             ┌──────────┐
-   │   JSON   │           │  Status  │             │  Moonshot│
-   │   Queue  │           │   API    │             │    App   │
+   │  Image   │           │  Status  │             │  Token   │
+   │  Sync    │           │ Updates  │             │ Creation │
    └──────────┘           └──────────┘             └──────────┘
 ```
 
-### 🔄 Workflow Enhancement
-1. User submits token data via web form
-2. Data saved to queue (JSON/Database)
-3. File watcher detects new entry
-4. Automation script triggered immediately
-5. Status updated in real-time
-6. System waits for next entry
+## 🔒 Security
 
----
+- API keys are stored in environment variables
+- Rate limiting prevents abuse
+- User verification through follower count
+- Secure database connections with row-level security
 
-## 📁 Project Structure
-```
-moonshot_automation/
-├── capture/              # Coordinate capture tools
-├── automation/           # Main automation scripts
-├── database/             # Database models (Phase 2)
-├── web/                  # Web interface (Phase 2)
-├── config/               # Configuration files
-├── utils/                # Utility functions
-├── data/                 # JSON data storage
-└── logs/                 # Application logs
-```
+## 📝 API Documentation
 
----
+### Creating a Token via API
 
-## 🚀 Quick Start
-
-### Phase 1 Usage (Batch Processing)
 ```bash
-# Capture coordinates
-python3 capture/coordinate_capture_click.py
-
-# Run automation
-python3 automation/moonshot_automation.py
-```
-
-### Phase 2 Usage (Current - Supabase Integration)
-```bash
-# Start polling listener
-python3 automation/supabase_listener_polling.py
-
-# Add coin via Supabase Dashboard or API
 curl -X POST 'YOUR_SUPABASE_URL/rest/v1/coins' \
   -H "apikey: YOUR_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"ticker": "TEST", "name": "Test Token", ...}'
+  -d '{
+    "ticker": "MOON",
+    "name": "Moon Token",
+    "description": "To the moon!",
+    "twitter_user": "@user",
+    "image_url": "https://example.com/image.png"
+  }'
 ```
 
-### Phase 3 Usage (Current - Dynamic Images)
+### Monitoring Queue Status
+
 ```bash
-# Terminal 1: Photo Sync Service
-python3 services/auto_photo_sync.py
-
-# Terminal 2: Photos Library Watcher  
-python3 automation/photos_library_watcher.py
-
-# Add coin with image URL via Supabase Dashboard or API
-curl -X POST 'YOUR_SUPABASE_URL/rest/v1/coins' \
-  -H "apikey: YOUR_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"ticker": "TEST", "name": "Test Token", "image_url": "https://..."}'
+curl 'YOUR_SUPABASE_URL/rest/v1/coins?status=eq.pending' \
+  -H "apikey: YOUR_KEY"
 ```
 
-### Phase 4 Usage (Planned - Twitter Bot)
+## 🧪 Testing
+
+Run the test suite:
+
 ```bash
-# Start all services
-python3 services/twitter_bot.py
-python3 services/auto_photo_sync.py
-python3 automation/photos_library_watcher.py
+# All tests
+python -m pytest tests/
 
-# Tweet to create token
-@YourBot create token MOON "Moon Token" [attach image]
+# Specific service tests
+python tests/test_twitter_bot.py
+python tests/test_queue_worker.py
+python tests/test_supabase_listener.py
 ```
+
+## 📊 Monitoring
+
+The system includes comprehensive logging:
+- `logs/master.log` - Important events only
+- `logs/detailed.log` - All debug information
+- `logs/events.json` - Structured event data
+- Service-specific logs in `logs/[service_name].log`
+
+View real-time logs:
+```bash
+python scripts/view_logs.py
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## ⚠️ Important Note
+
+This open-source version includes the complete pipeline for token metadata collection and queue management. The actual token creation automation module is proprietary and not included. 
+
+To use this system for actual token creation, you'll need to implement your own token creation logic in the `scripts/automation/moonshot_automation.py` module.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with Supabase for real-time database functionality
+- Twitter API v2 for social media integration
+- Solana blockchain for token creation
+- The open-source community for various libraries and tools
+
+## 📧 Contact
+
+For questions or support, please open an issue on GitHub or contact the maintainers.
 
 ---
 
-## 📝 Notes
-- Phase 1 demonstrates full end-to-end automation capability
-- System is stable and production-ready for batch processing
-- Phase 2 will enable real-time, on-demand token creation
-- Focus on maintainability and scalability
-
----
-
-**Created by**: Moonshot Automation Team  
-**Phase 1 Completion**: 2025-06-29  
-**Phase 2 Completion**: 2025-06-29  
-**Phase 3 Completion**: 2025-06-29  
-**Next Milestone**: Phase 4 - Twitter Bot Integration
+**Note**: This is the open-source version of MemeXshot. Some proprietary components related to automated GUI interaction have been excluded.
